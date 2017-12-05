@@ -16,14 +16,9 @@
 
 int		ft_read_file(const char *file)
 {
-	int		ret_read, fic, result, i, nb_dieze, nb_point, flag;
+	int		ret_read = 0, fic = 0, result = 0, i = 0, nb_dieze = 0, nb_point = 0, flag = 0;
 	char	buf[BUF_SIZE + 1];
 
-	result = 0;
-	i = 0;
-	nb_dieze = 0;
-	nb_point = 0;
-	flag = 0;
 	fic = open(file, O_RDONLY);
 	printf("ret_open = %d\n", fic);
 	if (fic == -1)
@@ -38,7 +33,7 @@ int		ft_read_file(const char *file)
 			nb_dieze++;
 		if (*buf == '.')
 			nb_point++;
-		if (*buf == '\n')
+		if (*buf == '\n' && (i / 5) % 21 == 0)
 			flag++;
 //		if (i > 0 && i % 5 != 0)
 //		{
@@ -47,6 +42,7 @@ int		ft_read_file(const char *file)
 //		}
 //		printf("nb_point = %d\nnb_dieze = %d\n", nb_point, nb_dieze);
 //		printf("%c", *buf);
+		printf("i = %d\n", i);
 		i++;
 	}
 	printf("%d\n", flag);
