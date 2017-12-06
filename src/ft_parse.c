@@ -32,8 +32,8 @@ int		ft_nb_diez(char *buf)
 		i++;
 	}
 	printf("nb_point = %d\nnb_dieze = %d", nb_point, nb_dieze);
-	if (i == 21 && buf[i] != '\n')
-		return (0);
+//	if (i == 21 && buf[i] != '\n')
+//		return (0);
 	if (nb_point != 12 || nb_dieze != 4)
 		return (0);
 	return (1);
@@ -46,7 +46,7 @@ int		ft_read_file(const char *file)
 	int 	fic;
 	int		result;
 
-	result = 0;
+	result = 2;
 	fic = open(file, O_RDONLY);
 	printf("ret_open = %d\n", fic);
 	if (fic == -1)
@@ -56,10 +56,9 @@ int		ft_read_file(const char *file)
 	}
 	while (read(fic, buf, BUF_SIZE))
 	{
-		if (ft_nb_diez(buf) == 0)
+		result = ft_nb_diez(buf);
+		if (result == 0)
 			return (0);
-		else
-			return (1);
 	}
 	if (close(fic) == -1)
 	{
@@ -71,6 +70,6 @@ int		ft_read_file(const char *file)
 
 int		main(int argc, char **argv)
 {
-	printf("%d", ft_read_file("list_tetriminos"));
+	printf("result -> %d\n", ft_read_file("list_tetriminos"));
 	return (0);
 }

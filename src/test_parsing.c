@@ -40,7 +40,7 @@ int		ft_read_file(const char *file)
 //			if (buf[i] != '#' || buf[i] != '.')
 //				return (0);
 //		}
-//		printf("nb_point = %d\nnb_dieze = %d\n", nb_point, nb_dieze);
+		printf("nb_point = %d\nnb_dieze = %d\n", nb_point, nb_dieze);
 //		printf("%c", *buf);
 		printf("i = %d\n", i);
 		i++;
@@ -58,6 +58,6 @@ int		ft_read_file(const char *file)
 
 int		main(int argc, char **argv)
 {
-	printf("list tetriminos is %d", ft_read_file("list_tetriminos"));
+	printf("list tetriminos is %d  (1 right/ 0 false)", ft_read_file("list_tetriminos"));
 	return (0);
 }
