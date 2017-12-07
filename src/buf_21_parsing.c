@@ -16,52 +16,50 @@
 
 int		ft_parsing(char *file)
 {
-	int		ret_open, nb_dieze = 0, nb_point = 0;
-	int		ret_read;
-	int		i;
+	int		ret_open, nb_dieze = 0, ret_read = 0, i = 0, nb_point = 0, last_buf;
 	char	buf[BUF_SIZE + 1];
 
-	ret_open = open(file, O_RDONLY);
-//	printf("open as %d\n", ret_open);
-	i = 0;
-	while ((ret_read = read(ret_open, buf, BUF_SIZE)))
+	ret_open = open(file, O_RDONLY); // ouvrir fichier
+	while ((ret_read = read(ret_open, buf, BUF_SIZE))) // lit le fichier
 	{
-		while (i <= 20)
+		while (i < ret_read - 1)
 		{
+			last_buf = ret_read;
 			if (buf[i] == '#' || buf[i] == '.' || buf[i] == '\n')
 			{
 				if (i == 4 || i == 9 || i == 14 || i == 19)
 				{
-					if (buf[i] != '\n')
+					if (buf[i] != '\n') // verifie si un '\n' est a chaque fin de ligne
 						return (0);
 				}
-				printf("%c", buf[i]);
-/*				if (i != 4 || i != 9 || i != 14 || i != 19)
-				{
-					if (buf[i] != '#' || buf[i] != '.')
-						return (0);
-				} */
-				if (buf[i] == '#')
-					nb_dieze++;
-				if (buf[i] == '#')
-					if (buf[i + 1] != '#' && buf[i - 1] != '#' && buf[i + 5] != '#' && buf[i - 5] != '#')
-						return (0);
+				printf("%c", buf[i]); // Affiche les tetriminos
 				if (buf[i] == '.')
 					nb_point++;
+				if (buf[i] == '#') // verifie si une dieze
+				{
+					nb_dieze++;
+					if (buf[i + 1] != '#' && buf[i + 5] != '#')
+						if (buf[i - 1] != '#' && buf[i - 5] != '#')
+							return (0);
+					if (buf[i + 1] == '\n' && ((buf[i + 5] != '#') && (buf[i - 5] != '#') && (buf[i - 2] != '#') && (buf[i - 6] != '#') && (buf[i + 4] != '#')))
+						return (0);
+				}
 				i++;
-			} else {
-				return (0);
 			}
+			else
+				return (0); // return  0 si pas # ou . ou \n
 		}
-		if (nb_dieze % 4 != 0 || nb_point % 4 != 0)
+		if (nb_dieze % 4 != 0 || nb_dieze > 104 || nb_point % 12 != 0 || nb_point > 312 || nb_dieze > 4)
 			return (0);
-		i = 0;
+		i = 0; // reinitialise i pour le prochain block
 	}
-	printf("nb_dieze = %d\nnb_point = %d\n", nb_dieze, nb_point);
+	if (last_buf > 20)
+		return (0);
 	return (1);
 }
-int		main(int argc, char **argv)
+
+int		main(void)
 {
-	printf("File is %d\n", ft_parsing("list_tetriminos"));
+	printf("\n\nLe fichier est %d\n", ft_parsing("list_tetriminos"));
 	return (0);
 }
