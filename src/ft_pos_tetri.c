@@ -14,24 +14,29 @@
 #include "../include/fillit.h"
 #define BUF_SIZE 21
 
-
 void ft_pos(int fd)
 {
 	int i = 0, ret_read = 0, line = 0;
-	char	buf[BUF_SIZE + 1], *pos_tetri;
+	char	buf[BUF_SIZE + 1];
 
 	while ((ret_read = read(fd, buf, BUF_SIZE)))
 	{
 		while (i < ret_read - 1)
 		{
-			if (buf[i] == '\n')
+			if (i > 3)
 				line++;
+			if (buf[i] == '#')
+			{
+				if (i > 3)
+					printf("x = %d\ny = %d\n\n", i / 4, line / 4);
+				else
+					printf("x = %d\ny = %d\n\n", i, line);
+			}
+//			printf("i = %d\n", i);
 			i++;
-			printf("i = %d\n", i);
 		}
 		i = 0;
 		line = 0;
-		printf("line = %d\n", line);
 	}
 }
 
@@ -63,6 +68,5 @@ int		main(void)
 
 	fd = open("list_tetriminos", O_RDONLY);
 	ft_pos(fd);
-	//ft_calc_pos("list_tetriminos");
 	return (0);
 }
