@@ -20,12 +20,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct		s_point
+typedef struct		Coordonnes
 {
-	char	**all_tetri;
-	int		*max;
-}					t_point;
+	int				x[4];
+	int				y[4];
+}					Coordonnes;
 
-int					ft_read_file(const char *file);
-int					ft_valid_file(const char *file);
+int					ft_parsing(char *file);
+Coordonnes			*ft_calc_pos(int fd);
+void 				ft_pos(int fd);
 #endif

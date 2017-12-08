@@ -41,17 +41,20 @@ int		ft_parsing(char *file)
 					if (buf[i + 1] != '#' && buf[i + 5] != '#')
 						if (buf[i - 1] != '#' && buf[i - 5] != '#')
 							return (0);
-					if (buf[i + 1] == '\n' && ((buf[i + 5] != '#') && (buf[i - 5] != '#') && (buf[i - 2] != '#') && (buf[i - 6] != '#') && (buf[i + 4] != '#')))
+					if (buf[i + 1] == '\n' && ((buf[i + 5] != '#') && (buf[i - 5] != '#')) && (buf[i - 2] != '#') && (buf[i - 4] != '#') && buf[i + 4])
 						return (0);
 				}
 				i++;
+				if (nb_dieze > 4)
+					return (0);
 			}
 			else
 				return (0); // return  0 si pas # ou . ou \n
 		}
-		if (nb_dieze % 4 != 0 || nb_dieze > 104 || nb_point % 12 != 0 || nb_point > 312 || nb_dieze > 4)
+		if (nb_dieze % 4 != 0 || nb_dieze > 104 || nb_point % 12 != 0 || nb_point > 312)
 			return (0);
 		i = 0; // reinitialise i pour le prochain block
+		nb_dieze = 0;
 	}
 	if (last_buf > 20)
 		return (0);
@@ -60,6 +63,6 @@ int		ft_parsing(char *file)
 
 int		main(void)
 {
-	printf("\n\nLe fichier est %d\n", ft_parsing("list_tetriminos"));
+	printf("File is %d\n", ft_parsing("list_tetriminos"));
 	return (0);
 }
