@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   fillit.h                                         .::    .:/ .      .::   */
+/*   stock_tetriminos.c                               .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/27 15:59:21 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/27 15:59:23 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/07 16:02:37 by almalfoy     #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/11 12:33:09 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef __FT_FILLIT_H
-# define __FT_FILLIT_H
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "fillit.h"
+#define BUF_SIZE 21
 
-typedef struct		s_point
+int		ft_nb_tetri(int fd)
 {
-	char	**all_tetri;
-	int		*max;
-}					t_point;
+	int		ret_read, i = 0, nb_block = 0, nb_dieze = 0;
+	char	buf[BUF_SIZE + 1];
 
-int					ft_read_file(const char *file);
-int					ft_valid_file(const char *file);
-#endif
+	while ((ret_read = read(fd, buf, BUF_SIZE)))
+	{
+		while (i < ret_read - 1)
+		{
+			if (buf[i] == '#')
+			{
+				if (nb_dieze > 2)
+					nb_block++;
+				nb_dieze++;
+			}
+			i++;
+		}
+		nb_dieze = 0;
+		i = 0;
+	}
+	return (nb_block);
+}

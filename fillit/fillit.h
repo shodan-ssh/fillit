@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   fillit.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/05 12:05:40 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/05 12:05:43 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/27 15:59:21 by almalfoy     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/27 15:59:23 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "/include/fillit.h"
+#ifndef __FT_FILLIT_H
+# define __FT_FILLIT_H
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int		main(int argc, void **argv)
+typedef struct		Coordonnes
 {
+	int				x[4];
+	int				y[4];
+}					Coordonnes;
 
-	return (0);
-}
+int					ft_parsing(int fd);
+Coordonnes			*ft_calc_pos(int fd);
+void 				ft_pos(int fd);
+int					ft_nb_tetri(int fd);
+void				ft_axe_x_y(int fd);
+#endif
