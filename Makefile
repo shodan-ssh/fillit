@@ -13,17 +13,25 @@
 
 NAME = fillit
 
-SRC = src/ft_parse.c
+SRC = main.c ft_pos_tetri.c buf_21_parsing.c ft_calc_nb_tetri.c
+
+CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
+
+OBJ = $(SRC:.c=.o)
+
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -L/include -lft $(SRC)
+	$(CC) $(FLAGS) -L libft -lft $(SRC) -o $(NAME)
+
 clean:
-	rm -rf *.o
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY : all, clean, fclean, re
