@@ -13,7 +13,7 @@
 
 NAME = fillit
 
-SRC = main.c ft_pos_tetri.c buf_21_parsing.c ft_calc_nb_tetri.c
+SRC = main.c ft_pos_tetri.c buf_21_parsing.c fonctions.c
 
 CC = gcc
 
@@ -24,7 +24,10 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(FLAGS) -L libft -lft $(SRC) -o $(NAME)
+	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(FLAGS) -c $^
 
 clean:
 	rm -rf $(OBJ)

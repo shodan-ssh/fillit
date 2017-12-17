@@ -3,119 +3,138 @@
 /*                                                              /             */
 /*   ft_pos_tetri.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 17:50:48 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/11 12:33:24 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/17 16:07:46 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#define BUF_SIZE 21
 
-void		ft_axe_x_y(int fd)
+void    ft_coord(char *buf, Coordonnes *tab_struct)
 {
-	int 	ret_y, y = 0, line = 0, j = 0, z = 0, x = 0, ret_x;
-	char	buf_x[6]; // buffer pour calculer l'indice
-	char	buf_y[22]; // buffer pour calculer la ligne
-	Coordonnes	tab_struct[ft_nb_tetri(fd) + 1]; // Tableau de structure
+	int i;
+	int cpt;
 
-	while ((ret_y = read(fd, buf_y, 21))) // Boucle pour les Coord  des lignes
+	i = 0;
+	cpt = 0;
+	while (cpt < 20)
 	{
-		buf_y[ret_y] = '\0';
-		while (y <= 20)
+		if (buf[cpt] == '#')
 		{
-			if (buf_y[y] == '\n')
-				line++;
-			if (buf_y[y] == '#')
-			{
-				tab_struct[j].y[j] = line;
-				printf("line is %d\n", tab_struct[j].y[j]);
-				j++;
-			}
+			tab_struct->y[i] = cpt / 5;
+			tab_struct->x[i] = cpt % 5;
+			i++;
 		}
-		y = 0;
-	}
-	while ((ret_x = read(fd, buf_x, 5)))
-	{
-		buf_x[ret_x] = '\0';
-		while (x <= 5)
-		{
-			if (buf_x[x] == '#')
-			{
-				tab_struct[z].x[z] = x;
-				printf("z = %d\n", z);
-				printf("x = %d\n", tab_struct[z].x[z]);
-				z++;
-			}
-		}
-		x = 0;
+		cpt++;
 	}
 }
+
+Coordonnes	*ft_21_par_21(Coordonnes *tab_struct, char *argv)
+{
+	int fd;
+	int ret_read;
+	int j;
+	char buf[BUF_SIZE + 1];
+
+	(void)argv;
+	j = 0;
+	fd = open("list_tetriminos", O_RDONLY);
+	while ((ret_read = read(fd, buf, BUF_SIZE)))
+	{
+		ft_coord(buf, &tab_struct[j]);
+		tab_struct[j].letter = 'A' + j;
+		ft_haut_gauche(&tab_struct[j]);
+		j++;
+	}
+	return (tab_struct);
+}
+
+void	ft_haut_gauche(Coordonnes *tab_struct)
+{
+	int min;
+	int a;
+
+	min = tab_struct->x[0];
+	a = 0;
+	while (a++ < 3)
+		min > tab_struct->x[a] ? min = tab_struct->x[a] : min;
+	a = -1;
+	while (a++ < 3)
+		tab_struct->x[a] -= min;
+	a = 0;
+	min = tab_struct->y[0];
+	while (a++ < 3)
+		min > tab_struct->y[a] ? min = tab_struct->y[a] : min;
+	a = -1;
+	while (a++ < 3)
+		tab_struct->y[a] -= min;
+}
+
 /*
-void ft_tab_struct(int fd)
+void	ft_haut_gauche(Coordonnes *tab_struct, int nb_tetri)
 {
-	int		i = 0;
-	int		nb_tetri = ft_nb_tetri(fd);
-	Coordonnes tab_struct[ft_nb_tetri(fd)];
+	int i;
+	int cpt;
 
-
-	while (i < nb_tetri)
+	cpt = 0;
+	i = 0;
+	j = 0;
+	while (j < nb_tetri)
 	{
-		tab_struct[i].x = ft_axe_x(fd);
-		tab_struct[i].y = ft_axe_y(fd);
-		printf("tab[i] = %d\n", tab_struct[i].x);
-		i++;
+		while (i < 4)
+		{
+			if ()
+			printf("%d\n", tab_struct[j].x[i]);
+			i++;
+		}
 	}
 }
 
-void	ft_axe_y(int fd)
+void    ft_coord(char *buf, Coordonnes *tab_struct)
 {
-	int		i = 0, ret_read, line = 0, j = 0;
-	char	buf[21];
-	Coordonnes y;
+	int i;
+	int cpt;
+	int line;
+	int fd;
 
-	while ((ret_read = read(fd, buf, 21)))
+	fd = open("list_tetriminos", O_RDONLY);
+	i = 0;
+	cpt = 0;
+	line = 0;
+	while (cpt < 20)
 	{
-		buf[ret_read] = '\0';
-		while (i <= 20)
+		if (buf[cpt] == '\n')
+			line++;
+		if (buf[cpt] == '#')
 		{
-			if (buf[i] == '\n' && buf[i + 1] != '\n')
-				line++;
-			if (buf[i] == '#')
-			{
-				y.y[j] = line;
-//				printf("%c -> line is %d\n", buf[i], y.y[j]);
-				printf("line is %d\n", line);
-				j++;
-			}
+			tab_struct->y[i] = line;
+			tab_struct->x[i] = cpt % 5;
 			i++;
 		}
-		i = 0;
-		line = 0;
+		cpt++;
 	}
 }
 
-void	ft_axe_x(int fd)
+Coordonnes	*ft_21_par_21(Coordonnes *tab_struct, char *argv)
 {
-	int i = 0, ret_read = 0, line = 0, j = 0;
-	char	buf[6];
-	Coordonnes x;
+	int fd;
+	int ret_read;
+	int j;
+	char buf[BUF_SIZE + 1];
 
-	while ((ret_read = read(fd, buf, 5)))
+	(void)argv;
+	j = 0;
+	fd = open("list_tetriminos", O_RDONLY);
+	while ((ret_read = read(fd, buf, BUF_SIZE)))
 	{
-		buf[ret_read] = '\0';
-		while (i < ret_read)
-		{
-			if (buf[i] == '#')
-			{
-				x.x[j] = i;
-				j++;
-				printf("i = %d\n", x.x[j]);
-			}
-			i++;
-		}
-		i = 0;
+		ft_coord(buf, &tab_struct[j]);
+//		ft_haut_gauche(&tab_struct[j], ft_nb_tetri(ft_open(argv)));
+		j++;
 	}
+	return (tab_struct);
 }
 */

@@ -32,6 +32,7 @@ int		ft_parsing(int fd)
 	int		ret_read;
 	int		i;
 	int		liaison;
+	int		last_buf;
 	char	buf[BUF_SIZE + 1];
 
 	i = 0;
@@ -39,6 +40,7 @@ int		ft_parsing(int fd)
 	nb_dieze = 0;
 	while ((ret_read = read(fd, buf, BUF_SIZE)))
 	{
+		last_buf = ret_read;
 		while (i < ret_read - 1)
 		{
 			if (ft_parsing_bis(buf, i) == 0)
@@ -63,16 +65,14 @@ int		ft_parsing(int fd)
 		i = 0;
 		nb_dieze = 0;
 	}
-	if (ret_read > 20)
+	if (last_buf != 20)
 		return (0);
 	return (1);
 }
-
-int		main(void)
+/*
+int		main(int argc, char **argv)
 {
-	int fd;
-
-	fd = open("list_tetriminos", O_RDONLY);
-	printf("File is %d\n", ft_parsing(fd));
+	printf("File is %d\n", ft_parsing(ft_open(argv[1])));
 	return (0);
 }
+*/
