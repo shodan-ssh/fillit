@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/27 15:59:21 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/17 15:43:06 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/18 16:29:33 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,12 @@ typedef struct			Coordonnes
 	int					y[4];
 	char				letter;
 }						Coordonnes;
+typedef struct			s_nbr
+{
+	int					tetri_nbr;
+	int					size;
+	int					num_tetri;
+}						t_nbr;
 
 int						ft_parsing(int fd);
 Coordonnes				*ft_calc_pos(int fd);
@@ -39,5 +45,9 @@ void    				ft_print_coord(Coordonnes *tab_struct, int nb_tetri);
 Coordonnes				*ft_21_par_21(Coordonnes *tab_struct, char *argv);
 void					ft_haut_gauche(Coordonnes *tab_struct);
 void    				ft_coord(char *buf, Coordonnes *tab_struct);
+char					**ft_create_final_map(int size);
 char					*ft_read(int fd);
+void 					ft_print_map(char **map);
+char					**ft_rec_back(char **map, Coordonnes *tetri, int pos, \
+						t_nbr nbr);
 #endif

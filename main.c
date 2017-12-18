@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 12:19:01 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/16 17:00:09 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/18 16:14:55 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,5 +73,6 @@ int			main(int argc, char **argv)
 	}
 	ft_21_par_21(tab_struct, argv[1]);
 	ft_print_coord(tab_struct, ft_nb_tetri(ft_open(argv[1])));
+	ft_print_map(ft_create_final_map(4));
 	return (0);
 }
