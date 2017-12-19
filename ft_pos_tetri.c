@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 17:50:48 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/18 16:42:44 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/19 14:40:40 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,7 @@ Coordonnes	*ft_21_par_21(Coordonnes *tab_struct, char *argv)
 		ft_haut_gauche(&tab_struct[j]);
 		j++;
 	}
+	close(fd);
 	return (tab_struct);
 }
 

@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/15 12:55:23 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/16 14:59:18 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/19 15:26:07 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,6 +46,13 @@ int		ft_nb_tetri(int fd)
 		i = 0;
 	}
 	return (nb_block);
+}
+
+int		ft_isalpha(int c)
+{
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }
 
 int		ft_sqrt(int n)
