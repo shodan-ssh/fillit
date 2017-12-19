@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/27 15:59:21 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/19 15:57:09 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/19 17:21:54 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,9 +53,9 @@ char					**ft_rec_back(char **map, Coordonnes *tetri, int pos, \
 						t_nbr nbr);
 int						ft_isalpha(int c);
 int						ft_success(char **grid, Coordonnes *tetri);
-char					**ft_del_tetri(Coordonnes tetri, char **map);
+char					**ft_del_tetri(char **map, Coordonnes tetri);
 int						ft_check(char **grid, Coordonnes tetri, int position, \
 						int size);
-char					**ft_place_tetri(Coordonnes tetri, char **map, \
+char					**ft_place_tetri(char **map, Coordonnes tetri, \
 						int position, int size);
 #endif

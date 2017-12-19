@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 12:19:01 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/19 14:54:21 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/19 18:13:40 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,12 +59,12 @@ void    ft_print_coord(Coordonnes *tab_struct, int nb_tetri)
 
 int			main(int argc, char **argv)
 {
-	Coordonnes tab_struct[ft_nb_tetri(ft_open(argv[1])) + 1];
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fillit take 1 argument");
 		return (0);
 	}
+	Coordonnes tab_struct[ft_nb_tetri(ft_open(argv[1])) + 1];
 	ft_read(ft_open(argv[1]));
 	if (ft_parsing(ft_open(argv[1])) != 1)
 	{

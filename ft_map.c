@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/15 11:33:28 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/19 15:56:57 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/19 17:21:36 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,7 +52,7 @@ void ft_print_map(char **map) {
 	}
 }
 
-char	**ft_place_tetri(Coordonnes tetri, char **map, int position, int size)
+char	**ft_place_tetri(char **map, Coordonnes tetri, int position, int size)
 {
 	int i;
 	int x;
@@ -69,7 +69,7 @@ char	**ft_place_tetri(Coordonnes tetri, char **map, int position, int size)
 	return (map);
 }
 
-char	**ft_del_tetri(Coordonnes tetri, char **map)
+char	**ft_del_tetri(char **map, Coordonnes tetri)
 {
 	int i;
 	int j;

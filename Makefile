@@ -6,7 +6,7 @@
 #    By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/27 11:30:00 by almalfoy     #+#   ##    ##    #+#        #
-#    Updated: 2017/12/19 15:08:27 by almalfoy    ###    #+. /#+    ###.fr      #
+#    Updated: 2017/12/19 17:15:04 by almalfoy    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -14,7 +14,7 @@
 NAME = fillit
 
 SRC = main.c ft_pos_tetri.c buf_21_parsing.c fonctions.c ft_map.c \
-		ft_backtrack.c ft_succes.c ft_check.c
+		ft_backtrack.c ft_succes.c ft_check.c ft_dim_tab.c
 
 CC = gcc
 

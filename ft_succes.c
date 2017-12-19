@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/19 14:57:24 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/19 15:18:48 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/19 17:22:07 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,7 @@ int		ft_success(char **grid, Coordonnes *tetri)
 	a = 0;
 	b = 0;
 	c = 0;
-	while (tetri[c].a != 0)
+	while (tetri[c].letter != 0)
 		c++;
 	while (grid[a] != NULL)
 	{

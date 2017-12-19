@@ -1,51 +1,52 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_check.c                                       .::    .:/ .      .::   */
+/*   ft_dim_tab.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/19 15:00:43 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/19 17:22:25 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/19 17:13:14 by almalfoy     #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/19 17:14:36 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_max(int *tab)
+int		ft_set_dim(int tetri_nbr)
 {
-	int		i;
-	int		max;
+	int dim;
 
-	i = 0;
-	max = tab[i];
-	while (i++ < 3)
-		max < tab[i] ? max = tab[i] : max;
-	return (max);
+	dim = 0;
+	tetri_nbr = 4 * tetri_nbr;
+	while ((dim * dim) < tetri_nbr)
+		dim++;
+	return (dim);
 }
 
-int		ft_check(char **grid, Coordonnes tetri, int position, int size)
+char	**ft_dim_tab(int dim)
 {
-	int i;
-	int count;
-	int x;
-	int y;
+	char	**grid;
+	int		i;
+	int		j;
 
-	x = position % size;
-	y = position / size;
 	i = 0;
-	count = 0;
-	if ((ft_max(tetri.y) + y) >= size
-	|| (ft_max(tetri.x) + x) >= size)
-		return (0);
-	while (i < 4)
+	j = 0;
+	grid = (char **)malloc(sizeof(char*) * dim + 1);
+	grid[dim] = NULL;
+	while (i < dim)
+		grid[i++] = (char *)malloc(sizeof(char) * dim + 1);
+	i = 0;
+	while (i < dim)
 	{
-		if (grid[tetri.y[i] + y][tetri.x[i] + x] == '.')
-			count++;
+		while (j < dim)
+		{
+			grid[i][j] = '.';
+			j++;
+		}
+		grid[i][j] = '\0';
+		j = 0;
 		i++;
 	}
-	if (count == 4)
-		return (1);
-	return (0);
+	return (grid);
 }
