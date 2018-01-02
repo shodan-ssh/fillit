@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 12:19:01 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/02 14:43:00 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/02 15:50:50 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,7 +66,7 @@ int			main(int argc, char **argv)
 	}
 	Coordonnes tab_struct[ft_nb_tetri(ft_open(argv[1])) + 1];
 	ft_read(ft_open(argv[1]));
-	if (ft_parse(ft_open(argv[1])) != 1, ft_nb_tetri(ft_open(argv[1])))
+	if (ft_parse(ft_open(argv[1]), ft_nb_tetri(ft_open(argv[1]))) != 1)
 	{
 		ft_putstr("error\n");
 		return (0);

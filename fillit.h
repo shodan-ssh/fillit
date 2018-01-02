@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/27 15:59:21 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/02 14:32:58 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/02 15:51:07 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,5 +58,5 @@ int						ft_check(char **grid, Coordonnes tetri, int position, \
 						int size);
 char					**ft_place_tetri(char **map, Coordonnes tetri, \
 						int position, int size);
-int						ft_parse(char *file, int *tetri_nbr);
+int						ft_parse(int fd, int tetri_nbr);
 #endif

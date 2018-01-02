@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/06 11:49:57 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/02 14:33:04 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/02 15:51:20 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,14 +62,12 @@ int		ft_tetri_check(char *buf, int ret)
 	return (0);
 }
 
-int		ft_parse(char *file, int *tetri_nbr)
+int		ft_parse(int fd, int tetri_nbr)
 {
-	int		fd;
 	int		ret;
 	int		bufsz;
 	char	buf[BUF_SIZE];
 
-	fd = open(file, O_RDONLY);
 	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		bufsz = ret;
@@ -78,10 +76,10 @@ int		ft_parse(char *file, int *tetri_nbr)
 			close(fd);
 			return (0);
 		}
-		*tetri_nbr += 1;
+		tetri_nbr += 1;
 	}
 	close(fd);
-	if (*tetri_nbr > 26)
+	if (tetri_nbr > 26)
 		return (0);
 	return (bufsz != 20 ? 0 : 1);
 }
