@@ -3,24 +3,26 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:24:59 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/05 15:25:00 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/05 18:29:33 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_print(char **grid)
-{
-	while (*grid)
+void ft_print(char **map) {
+	int i = 0;
+
+	while (map[i] != '\0')
 	{
-		ft_putstr(*grid++);
-		ft_putchar('\n');
+		ft_putstr(map[i]);
+		if (i % 1 == 0)
+			ft_putchar('\n');
+		i++;
 	}
-	ft_putchar('\n');
 }
 
 int		main(int argc, char **argv)
