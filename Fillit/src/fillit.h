@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   fillit.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: antdarin <antdarin@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/29 13:42:34 by antdarin     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/13 15:26:38 by antdarin    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/05 15:24:16 by almalfoy     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/05 15:24:17 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,6 +36,7 @@ typedef struct			s_nbr
 	int					size;
 	int					num_tetri;
 }						t_nbr;
+
 int						ft_parse(char *file, int *tetri_nbr);
 t_tetri					*ft_stock(char *file, int tetri_nbr);
 char					**ft_dim_tab(int dim);
@@ -49,5 +50,4 @@ int						ft_set_dim(int tetri_nbr);
 char					**ft_del_tetri(char **grid, t_tetri tetri);
 char					**ft_rec_back(char **grid, t_tetri *tetri, int position,
 						t_nbr structure);
-
 #endif

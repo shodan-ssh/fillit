@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   stock_tetriminos.c                               .::    .:/ .      .::   */
+/*   ft_putstr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/07 16:02:37 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/11 12:33:09 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/05 15:23:35 by almalfoy     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/05 15:23:36 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#define BUF_SIZE 21
+#include "libft.h"
 
-int		ft_nb_tetri(int fd)
+void	ft_putstr(char *str)
 {
-	int		ret_read, i = 0, nb_block = 0, nb_dieze = 0;
-	char	buf[BUF_SIZE + 1];
-
-	while ((ret_read = read(fd, buf, BUF_SIZE)))
+	if (str)
 	{
-		while (i < ret_read - 1)
-		{
-			if (buf[i] == '#')
-			{
-				if (nb_dieze > 2)
-					nb_block++;
-				nb_dieze++;
-			}
-			i++;
-		}
-		nb_dieze = 0;
-		i = 0;
+		while (*str)
+			ft_putchar(*str++);
 	}
-	return (nb_block);
 }

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_succes.c                                      .::    .:/ .      .::   */
+/*   ft_success.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/19 14:57:24 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/19 17:22:07 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/05 15:25:58 by almalfoy     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/05 15:25:59 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_success(char **grid, Coordonnes *tetri)
+int		ft_success(char **grid, t_tetri *tetri)
 {
 	int		count;
 	int		a;
@@ -24,7 +24,7 @@ int		ft_success(char **grid, Coordonnes *tetri)
 	a = 0;
 	b = 0;
 	c = 0;
-	while (tetri[c].letter != 0)
+	while (tetri[c].a != 0)
 		c++;
 	while (grid[a] != NULL)
 	{

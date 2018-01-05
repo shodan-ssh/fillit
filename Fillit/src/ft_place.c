@@ -1,51 +1,52 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_check.c                                       .::    .:/ .      .::   */
+/*   ft_place.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/19 15:00:43 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/19 17:22:25 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/05 15:25:38 by almalfoy     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/05 15:25:39 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_max(int *tab)
+char	**ft_place(char **grid, t_tetri tetri, int position, int size)
 {
-	int		i;
-	int		max;
-
-	i = 0;
-	max = tab[i];
-	while (i++ < 3)
-		max < tab[i] ? max = tab[i] : max;
-	return (max);
-}
-
-int		ft_check(char **grid, Coordonnes tetri, int position, int size)
-{
-	int i;
-	int count;
+	int	i;
 	int x;
 	int y;
 
 	x = position % size;
 	y = position / size;
 	i = 0;
-	count = 0;
-	if ((ft_max(tetri.y) + y) >= size
-	|| (ft_max(tetri.x) + x) >= size)
-		return (0);
 	while (i < 4)
 	{
-		if (grid[tetri.y[i] + y][tetri.x[i] + x] == '.')
-			count++;
+		grid[tetri.y[i] + y][tetri.x[i] + x] = tetri.a;
 		i++;
 	}
-	if (count == 4)
-		return (1);
-	return (0);
+	return (grid);
+}
+
+char	**ft_del_tetri(char **grid, t_tetri tetri)
+{
+	int a;
+	int b;
+
+	a = 0;
+	b = 0;
+	while (grid[a])
+	{
+		while (grid[a][b])
+		{
+			if (grid[a][b] == tetri.a)
+				grid[a][b] = '.';
+			b++;
+		}
+		b = 0;
+		a++;
+	}
+	return (grid);
 }
