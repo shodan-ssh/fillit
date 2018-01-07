@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_parse.c                                       .::    .:/ .      .::   */
+/*   ft_buf21_parsing.c                               .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:24:38 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/05 15:24:40 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/07 15:02:47 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_link(char *str)
+int		ft_liaisons(char *str)
 {
 	int a;
 	int count;
@@ -40,7 +40,7 @@ int		ft_link(char *str)
 	return (0);
 }
 
-int		ft_tetri_check(char *buf, int ret)
+int		ft_parse2(char *buf, int ret)
 {
 	int		i;
 	size_t	count;
@@ -56,7 +56,7 @@ int		ft_tetri_check(char *buf, int ret)
 			return (0);
 		buf[i++] == '#' ? count++ : count;
 	}
-	if (ft_link(buf) && count == 4)
+	if (ft_liaisons(buf) && count == 4)
 		return (1);
 	return (0);
 }
@@ -72,7 +72,7 @@ int		ft_parse(char *file, int *tetri_nbr)
 	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		bufsz = ret;
-		if (!(ft_tetri_check(buf, ret)))
+		if (!(ft_parse2(buf, ret)))
 		{
 			close(fd);
 			return (0);

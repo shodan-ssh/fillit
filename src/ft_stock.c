@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_stock.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:24:46 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/05 15:24:47 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/07 14:28:26 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,7 @@ void		ft_ajustement(t_tetri *tetri)
 		tetri->y[a] -= min;
 }
 
-t_tetri		ft_fill_pos(char *buf)
+t_tetri		ft_stock_pos(char *buf)
 {
 	int		i;
 	int		j;
@@ -68,7 +68,7 @@ t_tetri		*ft_stock(char *file, int tetri_nbr)
 	fd = open(file, O_RDONLY);
 	while (read(fd, buf, BUF_SIZE))
 	{
-		tetri[num_tetri] = ft_fill_pos(buf);
+		tetri[num_tetri] = ft_stock_pos(buf);
 		tetri[num_tetri].a = 65 + num_tetri;
 		ft_ajustement(&tetri[num_tetri]);
 		num_tetri++;

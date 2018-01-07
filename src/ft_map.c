@@ -1,52 +1,52 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_dim_tab.c                                     .::    .:/ .      .::   */
+/*   ft_map.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:25:26 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/05 15:25:28 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/07 16:27:37 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_set_dim(int tetri_nbr)
+int		ft_set_dim(int nb_tetri)
 {
 	int dim;
 
 	dim = 0;
-	tetri_nbr = 4 * tetri_nbr;
-	while ((dim * dim) < tetri_nbr)
+	nb_tetri = 4 * nb_tetri;
+	while ((dim * dim) < nb_tetri)
 		dim++;
 	return (dim);
 }
 
-char	**ft_dim_tab(int dim)
+char	**ft_remplissage_tab(int taille)
 {
-	char	**grid;
+	char	**tab;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	grid = (char **)malloc(sizeof(char*) * dim + 1);
-	grid[dim] = NULL;
-	while (i < dim)
-		grid[i++] = (char *)malloc(sizeof(char) * dim + 1);
+	tab = (char **)malloc(sizeof(char*) * taille + 1);
+	tab[taille] = NULL;
+	while (i < taille)
+		tab[i++] = (char *)malloc(sizeof(char) * taille + 1);
 	i = 0;
-	while (i < dim)
+	while (i < taille)
 	{
-		while (j < dim)
+		while (j < taille)
 		{
-			grid[i][j] = '.';
+			tab[i][j] = '.';
 			j++;
 		}
-		grid[i][j] = '\0';
+		tab[i][j] = '\0';
 		j = 0;
 		i++;
 	}
-	return (grid);
+	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:24:16 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/05 18:43:13 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/07 16:20:11 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "../fonctions/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 
@@ -39,7 +38,7 @@ typedef struct			s_nbr
 
 int						ft_parse(char *file, int *tetri_nbr);
 t_tetri					*ft_stock(char *file, int tetri_nbr);
-char					**ft_dim_tab(int dim);
+char					**ft_remplissage_tab(int taille);
 char					**ft_place(char **grid, t_tetri tetri, int position,
 						int size);
 int						ft_success(char **grid, t_tetri *tetri);
@@ -50,4 +49,7 @@ int						ft_set_dim(int tetri_nbr);
 char					**ft_del_tetri(char **grid, t_tetri tetri);
 char					**ft_rec_back(char **grid, t_tetri *tetri, int position,
 						t_nbr structure);
+int						ft_isalpha(int c);
+void					ft_putchar(char c);
+void					ft_putstr(char *str);
 #endif

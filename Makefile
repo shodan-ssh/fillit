@@ -6,7 +6,7 @@
 #    By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/05 15:22:34 by almalfoy     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/05 18:43:51 by almalfoy    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/07 16:35:53 by almalfoy    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,18 +19,13 @@ NAME = fillit
 
 D_SRC = src/
 
-D_LIBFT = fonctions/
-
-SRC1 =	ft_backtracking.c ft_check.c ft_dim_tab.c main.c ft_buf21_parsing.c \
-		ft_stock.c ft_place.c
-
-SRC2 =	ft_putstr.c ft_putchar.c ft_isalpha.c
+SRC1 =	ft_backtracking.c ft_map.c main.c ft_buf_21_parsing.c \
+		ft_stock.c ft_place.c ft_fonctions.c
 
 SRC_1 = $(addprefix $(D_SRC), $(SRC1))
 
-SRC_2 = $(addprefix $(D_LIBFT), $(SRC2))
 
-OBJ = $(SRC_1:.c=.o) $(SRC_2:.c=.o)
+OBJ = $(SRC_1:.c=.o)
 
 all: $(NAME)
 
