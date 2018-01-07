@@ -6,33 +6,12 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:24:46 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/07 14:28:26 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/07 17:31:54 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void		ft_ajustement(t_tetri *tetri)
-{
-	int min;
-	int a;
-
-	min = tetri->x[0];
-	a = 0;
-	while (a++ < 3)
-		min > tetri->x[a] ? min = tetri->x[a] : min;
-	a = -1;
-	while (a++ < 3)
-		tetri->x[a] -= min;
-	a = 0;
-	min = tetri->y[0];
-	while (a++ < 3)
-		min > tetri->y[a] ? min = tetri->y[a] : min;
-	a = -1;
-	while (a++ < 3)
-		tetri->y[a] -= min;
-}
 
 t_tetri		ft_stock_pos(char *buf)
 {
@@ -53,6 +32,27 @@ t_tetri		ft_stock_pos(char *buf)
 		i++;
 	}
 	return (tab);
+}
+
+void		ft_ajustement(t_tetri *tetri)
+{
+	int min;
+	int a;
+
+	min = tetri->x[0];
+	a = 0;
+	while (a++ < 3)
+		min > tetri->x[a] ? min = tetri->x[a] : min;
+	a = -1;
+	while (a++ < 3)
+		tetri->x[a] -= min;
+	a = 0;
+	min = tetri->y[0];
+	while (a++ < 3)
+		min > tetri->y[a] ? min = tetri->y[a] : min;
+	a = -1;
+	while (a++ < 3)
+		tetri->y[a] -= min;
 }
 
 t_tetri		*ft_stock(char *file, int tetri_nbr)

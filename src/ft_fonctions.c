@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/07 15:08:03 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/07 15:09:34 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/07 17:24:48 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,5 +31,19 @@ void	ft_putstr(char *str)
 	{
 		while (*str)
 			ft_putchar(*str++);
+	}
+}
+
+void	ft_print(char **map)
+{
+	int i;
+
+	i = 0;
+	while (map[i] != '\0')
+	{
+		ft_putstr(map[i]);
+		if (i % 1 == 0)
+			ft_putchar('\n');
+		i++;
 	}
 }

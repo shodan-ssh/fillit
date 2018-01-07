@@ -6,40 +6,12 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:25:14 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/07 13:45:50 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/07 17:33:01 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-char	**ft_rec_back(char **grid, t_tetri *tetri, int pos, t_nbr nbr)
-{
-	int x;
-	int y;
-
-	x = pos % nbr.size;
-	y = pos / nbr.size;
-	while (x < nbr.size && y < nbr.size)
-	{
-		if (ft_check(grid, tetri[nbr.num_tetri], pos, nbr.size))
-		{
-			grid = ft_place(grid, tetri[nbr.num_tetri], pos, nbr.size);
-			if (ft_success(grid, tetri) == 1)
-				return (grid);
-			nbr.num_tetri = nbr.num_tetri + 1;
-			ft_rec_back(grid, tetri, 0, nbr);
-			nbr.num_tetri = nbr.num_tetri - 1;
-		}
-		if (ft_success(grid, tetri) == 1)
-			return (grid);
-		ft_del_tetri(grid, tetri[nbr.num_tetri]);
-		pos++;
-		x = pos % nbr.size;
-		y = pos / nbr.size;
-	}
-	return (NULL);
-}
 
 int		ft_success(char **grid, t_tetri *tetri)
 {
@@ -105,4 +77,32 @@ int		ft_check(char **grid, t_tetri tetri, int position, int size)
 	if (count == 4)
 		return (1);
 	return (0);
+}
+
+char	**ft_rec_back(char **grid, t_tetri *tetri, int pos, t_nbr nbr)
+{
+	int x;
+	int y;
+
+	x = pos % nbr.size;
+	y = pos / nbr.size;
+	while (x < nbr.size && y < nbr.size)
+	{
+		if (ft_check(grid, tetri[nbr.num_tetri], pos, nbr.size))
+		{
+			grid = ft_place(grid, tetri[nbr.num_tetri], pos, nbr.size);
+			if (ft_success(grid, tetri) == 1)
+				return (grid);
+			nbr.num_tetri = nbr.num_tetri + 1;
+			ft_rec_back(grid, tetri, 0, nbr);
+			nbr.num_tetri = nbr.num_tetri - 1;
+		}
+		if (ft_success(grid, tetri) == 1)
+			return (grid);
+		ft_del_tetri(grid, tetri[nbr.num_tetri]);
+		pos++;
+		x = pos % nbr.size;
+		y = pos / nbr.size;
+	}
+	return (NULL);
 }

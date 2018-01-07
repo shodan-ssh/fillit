@@ -6,26 +6,12 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:24:59 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/07 16:21:16 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/07 17:30:04 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void	ft_print(char **map)
-{
-	int i;
-
-	i = 0;
-	while (map[i] != '\0')
-	{
-		ft_putstr(map[i]);
-		if (i % 1 == 0)
-			ft_putchar('\n');
-		i++;
-	}
-}
 
 int		main(int argc, char **argv)
 {
