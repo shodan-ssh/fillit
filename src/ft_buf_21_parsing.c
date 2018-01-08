@@ -6,7 +6,7 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:24:38 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/07 17:40:57 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/08 12:01:30 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,10 +43,10 @@ int		ft_liaisons(char *str)
 int		ft_parse2(char *buf, int ret)
 {
 	int		i;
-	size_t	count;
+	int		nb_dieze;
 
 	i = 0;
-	count = 0;
+	nb_dieze = 0;
 	while (i < ret)
 	{
 		if (i == 4 || i == 9 || i == 14 || i == 19)
@@ -54,9 +54,9 @@ int		ft_parse2(char *buf, int ret)
 				return (0);
 		if (buf[i] != '.' && buf[i] != '#' && i != 20)
 			return (0);
-		buf[i++] == '#' ? count++ : count;
+		buf[i++] == '#' ? nb_dieze++ : nb_dieze;
 	}
-	if (ft_liaisons(buf) && count == 4)
+	if (ft_liaisons(buf) && nb_dieze == 4)
 		return (1);
 	return (0);
 }
@@ -65,13 +65,13 @@ int		ft_parse(char *file, int *tetri_nbr)
 {
 	int		fd;
 	int		ret;
-	int		bufsz;
+	int		verif_last_block;
 	char	buf[BUF_SIZE];
 
 	fd = open(file, O_RDONLY);
 	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
-		bufsz = ret;
+		verif_last_block = ret;
 		if (!(ft_parse2(buf, ret)))
 		{
 			close(fd);
@@ -82,5 +82,5 @@ int		ft_parse(char *file, int *tetri_nbr)
 	close(fd);
 	if (*tetri_nbr > 26)
 		return (0);
-	return (bufsz != 20 ? 0 : 1);
+	return (verif_last_block != 20 ? 0 : 1);
 }

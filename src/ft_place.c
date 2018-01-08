@@ -3,17 +3,17 @@
 /*                                                              /             */
 /*   ft_place.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: almalfoy <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:25:38 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/05 15:25:39 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/08 12:08:31 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**ft_place(char **grid, t_tetri tetri, int position, int size)
+char	**ft_place(char **map, Coordonnees tetri, int position, int size)
 {
 	int	i;
 	int x;
@@ -24,29 +24,29 @@ char	**ft_place(char **grid, t_tetri tetri, int position, int size)
 	i = 0;
 	while (i < 4)
 	{
-		grid[tetri.y[i] + y][tetri.x[i] + x] = tetri.a;
+		map[tetri.y[i] + y][tetri.x[i] + x] = tetri.letter;
 		i++;
 	}
-	return (grid);
+	return (map);
 }
 
-char	**ft_del_tetri(char **grid, t_tetri tetri)
+char	**ft_del_tetri(char **map, Coordonnees tetri)
 {
-	int a;
-	int b;
+	int i;
+	int j;
 
-	a = 0;
-	b = 0;
-	while (grid[a])
+	i = 0;
+	j = 0;
+	while (map[i])
 	{
-		while (grid[a][b])
+		while (map[i][j])
 		{
-			if (grid[a][b] == tetri.a)
-				grid[a][b] = '.';
-			b++;
+			if (map[i][j] == tetri.letter)
+				map[i][j] = '.';
+			j++;
 		}
-		b = 0;
-		a++;
+		j = 0;
+		i++;
 	}
-	return (grid);
+	return (map);
 }

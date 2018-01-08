@@ -6,18 +6,18 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:24:46 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/07 17:31:54 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/08 11:55:18 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetri		ft_stock_pos(char *buf)
+Coordonnees		ft_stock_pos(char *buf)
 {
 	int		i;
 	int		j;
-	t_tetri	tab;
+	Coordonnees	tab;
 
 	i = 0;
 	j = 0;
@@ -34,7 +34,7 @@ t_tetri		ft_stock_pos(char *buf)
 	return (tab);
 }
 
-void		ft_ajustement(t_tetri *tetri)
+void		ft_ajustement(Coordonnees *tetri)
 {
 	int min;
 	int a;
@@ -55,25 +55,25 @@ void		ft_ajustement(t_tetri *tetri)
 		tetri->y[a] -= min;
 }
 
-t_tetri		*ft_stock(char *file, int tetri_nbr)
+Coordonnees		*ft_stock(char *file, int tetri_nbr)
 {
 	int			fd;
 	char		buf[BUF_SIZE];
-	t_tetri		*tetri;
+	Coordonnees		*tetri;
 	int			num_tetri;
 
 	num_tetri = 0;
-	if (!(tetri = (t_tetri*)malloc(sizeof(t_tetri) * tetri_nbr + 1)))
+	if (!(tetri = (Coordonnees*)malloc(sizeof(Coordonnees) * tetri_nbr + 1)))
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	while (read(fd, buf, BUF_SIZE))
 	{
 		tetri[num_tetri] = ft_stock_pos(buf);
-		tetri[num_tetri].a = 65 + num_tetri;
+		tetri[num_tetri].letter = 65 + num_tetri;
 		ft_ajustement(&tetri[num_tetri]);
 		num_tetri++;
 	}
 	close(fd);
-	tetri[num_tetri].a = 0;
+	tetri[num_tetri].letter = 0;
 	return (tetri);
 }

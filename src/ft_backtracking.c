@@ -6,14 +6,14 @@
 /*   By: almalfoy <almalfoy@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/05 15:25:14 by almalfoy     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/07 17:33:01 by almalfoy    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/08 12:09:31 by almalfoy    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_success(char **grid, t_tetri *tetri)
+int		ft_success(char **map, Coordonnees *tetri)
 {
 	int		count;
 	int		a;
@@ -24,13 +24,13 @@ int		ft_success(char **grid, t_tetri *tetri)
 	a = 0;
 	b = 0;
 	c = 0;
-	while (tetri[c].a != 0)
+	while (tetri[c].letter != 0)
 		c++;
-	while (grid[a] != NULL)
+	while (map[a] != NULL)
 	{
-		while (grid[a][b] != '\0')
+		while (map[a][b] != '\0')
 		{
-			if (ft_isalpha(grid[a][b]))
+			if (ft_isalpha(map[a][b]))
 				count++;
 			b++;
 		}
@@ -54,7 +54,7 @@ int		ft_max(int *tab)
 	return (max);
 }
 
-int		ft_check(char **grid, t_tetri tetri, int position, int size)
+int		ft_check(char **map, Coordonnees tetri, int position, int size)
 {
 	int i;
 	int count;
@@ -70,7 +70,7 @@ int		ft_check(char **grid, t_tetri tetri, int position, int size)
 		return (0);
 	while (i < 4)
 	{
-		if (grid[tetri.y[i] + y][tetri.x[i] + x] == '.')
+		if (map[tetri.y[i] + y][tetri.x[i] + x] == '.')
 			count++;
 		i++;
 	}
@@ -79,7 +79,7 @@ int		ft_check(char **grid, t_tetri tetri, int position, int size)
 	return (0);
 }
 
-char	**ft_rec_back(char **grid, t_tetri *tetri, int pos, t_nbr nbr)
+char	**ft_rec_back(char **map, Coordonnees *tetri, int pos, t_nbr nbr)
 {
 	int x;
 	int y;
@@ -88,18 +88,18 @@ char	**ft_rec_back(char **grid, t_tetri *tetri, int pos, t_nbr nbr)
 	y = pos / nbr.size;
 	while (x < nbr.size && y < nbr.size)
 	{
-		if (ft_check(grid, tetri[nbr.num_tetri], pos, nbr.size))
+		if (ft_check(map, tetri[nbr.num_tetri], pos, nbr.size))
 		{
-			grid = ft_place(grid, tetri[nbr.num_tetri], pos, nbr.size);
-			if (ft_success(grid, tetri) == 1)
-				return (grid);
+			map = ft_place(map, tetri[nbr.num_tetri], pos, nbr.size);
+			if (ft_success(map, tetri) == 1)
+				return (map);
 			nbr.num_tetri = nbr.num_tetri + 1;
-			ft_rec_back(grid, tetri, 0, nbr);
+			ft_rec_back(map, tetri, 0, nbr);
 			nbr.num_tetri = nbr.num_tetri - 1;
 		}
-		if (ft_success(grid, tetri) == 1)
-			return (grid);
-		ft_del_tetri(grid, tetri[nbr.num_tetri]);
+		if (ft_success(map, tetri) == 1)
+			return (map);
+		ft_del_tetri(map, tetri[nbr.num_tetri]);
 		pos++;
 		x = pos % nbr.size;
 		y = pos / nbr.size;
